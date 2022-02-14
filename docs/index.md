@@ -2,7 +2,7 @@
 organization: Turbot
 category: ["saas"]
 icon_url: "/images/plugins/turbot/planetscale.svg"
-brand_color: "#666666"
+brand_color: "#8467F3"
 display_name: "PlanetScale"
 short_name: "planetscale"
 description: "Steampipe plugin to query databases, logs and more from PlanetScale."
