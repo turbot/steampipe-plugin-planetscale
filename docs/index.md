@@ -24,7 +24,7 @@ select
   region_slug,
   created_at
 from
-  planetscale_database
+  planetscale_database;
 ```
 
 ```
@@ -75,4 +75,4 @@ connection "planetscale" {
 ## Get involved
 
 - Open source: https://github.com/turbot/steampipe-plugin-planetscale
-- Community: [Slack Channel](https://join.slack.com/t/steampipe/shared_invite/zt-oij778tv-lYyRTWOTMQYBVAbtPSWs3g)
+- Community: [Slack Channel](https://steampipe.io/community/join)
