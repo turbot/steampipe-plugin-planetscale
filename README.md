@@ -41,7 +41,7 @@ select
   region_slug,
   created_at
 from
-  planetscale_database
+  planetscale_database;
 ```
 
 ```
