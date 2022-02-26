@@ -1,4 +1,4 @@
-my_db Table: planetscale_audit_log
+# Table: planetscale_audit_log
 
 Query audit log records for API operations on your account.
 
