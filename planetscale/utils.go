@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/planetscale/planetscale-go/planetscale"
 
-	"github.com/turbot/steampipe-plugin-sdk/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
 )
 
 func connect(_ context.Context, d *plugin.QueryData) (*planetscale.Client, error) {
