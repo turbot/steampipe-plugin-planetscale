@@ -25,13 +25,11 @@ func connect(_ context.Context, d *plugin.QueryData) (*planetscale.Client, error
 
 	// Prefer config settings
 	planetscaleConfig := GetConfig(d.Connection)
-	if &planetscaleConfig != nil {
-		if planetscaleConfig.Token != nil {
-			token = *planetscaleConfig.Token
-		}
-		if planetscaleConfig.Organization != nil {
-			organization = *planetscaleConfig.Organization
-		}
+	if planetscaleConfig.Token != nil {
+		token = *planetscaleConfig.Token
+	}
+	if planetscaleConfig.Organization != nil {
+		organization = *planetscaleConfig.Organization
 	}
 
 	// Error if the minimum config is not set
@@ -77,10 +75,8 @@ func organization(_ context.Context, d *plugin.QueryData) string {
 
 	// Prefer config settings
 	planetscaleConfig := GetConfig(d.Connection)
-	if &planetscaleConfig != nil {
-		if planetscaleConfig.Organization != nil {
-			org = *planetscaleConfig.Organization
-		}
+	if planetscaleConfig.Organization != nil {
+		org = *planetscaleConfig.Organization
 	}
 
 	// Save to cache
