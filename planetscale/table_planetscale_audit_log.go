@@ -4,9 +4,8 @@ import (
 	"context"
 
 	"github.com/planetscale/planetscale-go/planetscale"
-
-	"github.com/turbot/steampipe-plugin-sdk/v3/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
 )
 
 func tablePlanetScaleAuditLog(ctx context.Context) *plugin.Table {
@@ -49,14 +48,24 @@ func listAuditLog(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateDat
 
 	// list all audit logs for the given organization
 	opts := &planetscale.ListAuditLogsRequest{Organization: organization(ctx, d)}
-	items, err := conn.AuditLogs.List(ctx, opts)
-	if err != nil {
-		plugin.Logger(ctx).Error("planetscale_audit_log.listAuditLog", "query_error", err, "opts", opts)
-		return nil, err
+
+	startingAfter := ""
+	for {
+		// Use a limit of 1000 - seems to work, but I can't find docs for max
+		resp, err := conn.AuditLogs.List(ctx, opts, planetscale.WithStartingAfter(startingAfter), planetscale.WithLimit(1000))
+		if err != nil {
+			plugin.Logger(ctx).Error("planetscale_audit_log.listAuditLog", "query_error", err, "opts", opts, "startingAfter", startingAfter)
+			return nil, err
+		}
+		for _, i := range resp.Data {
+			d.StreamListItem(ctx, i)
+		}
+		if resp.HasNext {
+			startingAfter = *resp.CursorEnd
+		} else {
+			break
+		}
 	}
 
-	for _, i := range items {
-		d.StreamListItem(ctx, i)
-	}
 	return nil, nil
 }
