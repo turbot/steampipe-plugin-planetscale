@@ -354,8 +354,8 @@ github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/planetscale/planetscale-go v0.52.0 h1:64U6Cbd7RfJM6dPQinos3hYdTHoxyH+C/GHIAB/K7do=
-github.com/planetscale/planetscale-go v0.52.0/go.mod h1:+rGpW2u7iQZZx4O/nFj4MZe4xIS22CVegEgl1IkTExQ=
+github.com/planetscale/planetscale-go v0.73.0 h1:JIyIdrOlrtePKpLDTIZTKifXp7h4R4h0lG1GivviYRk=
+github.com/planetscale/planetscale-go v0.73.0/go.mod h1:T9yNcF+t12+GCxgH7ehIi9Qx36zRSrE5i3PP98etWTA=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

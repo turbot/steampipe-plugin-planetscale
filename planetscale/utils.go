@@ -21,7 +21,7 @@ func connect(_ context.Context, d *plugin.QueryData) (*planetscale.Client, error
 
 	// Default to the env var settings
 	token := os.Getenv("PLANETSCALE_TOKEN")
-	organization := ""
+	organization := os.Getenv("PLANETSCALE_ORGANIZATION")
 
 	// Prefer config settings
 	planetscaleConfig := GetConfig(d.Connection)
@@ -49,7 +49,7 @@ func connect(_ context.Context, d *plugin.QueryData) (*planetscale.Client, error
 		// Service tokens don't seem to be supported in planetscale yet?
 		// See https://github.com/planetscale/planetscale-go/issues/105
 		conn, err := planetscale.NewClient(
-			planetscale.WithServiceToken("nw-test", token),
+			planetscale.WithServiceToken("<client_name>", "<token>"),
 		)
 		if err != nil {
 			return nil, err
@@ -71,7 +71,7 @@ func organization(_ context.Context, d *plugin.QueryData) string {
 	}
 
 	// Default to the env var settings
-	org := ""
+	org := os.Getenv("PLANETSCALE_ORGANIZATION")
 
 	// Prefer config settings
 	planetscaleConfig := GetConfig(d.Connection)

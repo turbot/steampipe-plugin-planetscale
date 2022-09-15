@@ -72,6 +72,10 @@ connection "planetscale" {
 - `organization` - Organization to scope all queries to.
 - `token` - Access token (note: NOT a service token) from PlanetScale.
 
+Environment variables are also available as an alternate configuration method:
+* `PLANETSCALE_ORGANIZATION`
+* `PLANETSCALE_TOKEN`
+
 ## Get involved
 
 - Open source: https://github.com/turbot/steampipe-plugin-planetscale
