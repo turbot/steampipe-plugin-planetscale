@@ -1,3 +1,15 @@
+## v0.2.0 [2022-09-26]
+
+_Enhancements_
+
+- Added support for `PLANETSCALE_ORGANIZATION` env variable.
+- Added pagination support in `planetscale_audit_log` table.
+
+_Dependencies_
+
+- Recompiled plugin with [steampipe-plugin-sdk v4.1.7](https://github.com/turbot/steampipe-plugin-sdk/blob/main/CHANGELOG.md#v417-2022-09-08) which includes several caching and memory management improvements.
+- Recompiled plugin with Go version `1.19`.
+
 ## v0.1.0 [2022-04-27]
 
 _Enhancements_
