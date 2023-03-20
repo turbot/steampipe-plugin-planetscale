@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/planetscale/planetscale-go/planetscale"
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
 func tablePlanetScaleAuditLog(ctx context.Context) *plugin.Table {

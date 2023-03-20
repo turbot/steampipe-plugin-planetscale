@@ -5,9 +5,9 @@ import (
 
 	"github.com/planetscale/planetscale-go/planetscale"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tablePlanetScaleCertificate(ctx context.Context) *plugin.Table {
@@ -69,8 +69,8 @@ func listCertificate(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrate
 		branchName = branch.Branch.Name
 	} else {
 		orgName = organization(ctx, d)
-		dbName = d.KeyColumnQuals["database_name"].GetStringValue()
-		branchName = d.KeyColumnQuals["branch_name"].GetStringValue()
+		dbName = d.EqualsQuals["database_name"].GetStringValue()
+		branchName = d.EqualsQuals["branch_name"].GetStringValue()
 	}
 
 	// list all databases for the given organization
@@ -99,9 +99,9 @@ func getCertificate(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateD
 		return nil, err
 	}
 	org := organization(ctx, d)
-	dbName := d.KeyColumnQuals["database_name"].GetStringValue()
-	branchName := d.KeyColumnQuals["branch_name"].GetStringValue()
-	name := d.KeyColumnQuals["name"].GetStringValue()
+	dbName := d.EqualsQuals["database_name"].GetStringValue()
+	branchName := d.EqualsQuals["branch_name"].GetStringValue()
+	name := d.EqualsQuals["name"].GetStringValue()
 	opts := &planetscale.GetDatabaseBranchCertificateRequest{Organization: org, Database: dbName, Branch: branchName, DisplayName: name}
 	item, err := conn.Certificates.Get(ctx, opts)
 	if err != nil {

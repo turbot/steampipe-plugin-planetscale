@@ -5,9 +5,9 @@ import (
 
 	"github.com/planetscale/planetscale-go/planetscale"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tablePlanetScaleDatabaseBranch(ctx context.Context) *plugin.Table {
@@ -62,8 +62,8 @@ func listDatabaseBranch(ctx context.Context, d *plugin.QueryData, h *plugin.Hydr
 	var dbName string
 	if h.Item != nil {
 		dbName = h.Item.(*planetscale.Database).Name
-	} else if d.KeyColumnQuals["database_name"] != nil {
-		dbName = d.KeyColumnQuals["database_name"].GetStringValue()
+	} else if d.EqualsQuals["database_name"] != nil {
+		dbName = d.EqualsQuals["database_name"].GetStringValue()
 	}
 
 	// list all databases for the given organization
@@ -91,8 +91,8 @@ func getDatabaseBranch(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 		return nil, err
 	}
 	org := organization(ctx, d)
-	dbName := d.KeyColumnQuals["database_name"].GetStringValue()
-	name := d.KeyColumnQuals["name"].GetStringValue()
+	dbName := d.EqualsQuals["database_name"].GetStringValue()
+	name := d.EqualsQuals["name"].GetStringValue()
 	opts := &planetscale.GetDatabaseBranchRequest{Organization: org, Database: dbName, Branch: name}
 	item, err := conn.DatabaseBranches.Get(ctx, opts)
 	if err != nil {

@@ -5,9 +5,9 @@ import (
 
 	"github.com/planetscale/planetscale-go/planetscale"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tablePlanetScaleDeployRequest(ctx context.Context) *plugin.Table {
@@ -65,8 +65,8 @@ func listDeployRequest(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 	var dbName string
 	if h.Item != nil {
 		dbName = h.Item.(*planetscale.Database).Name
-	} else if d.KeyColumnQuals["database_name"] != nil {
-		dbName = d.KeyColumnQuals["database_name"].GetStringValue()
+	} else if d.EqualsQuals["database_name"] != nil {
+		dbName = d.EqualsQuals["database_name"].GetStringValue()
 	}
 
 	// list all databases for the given organization
@@ -94,8 +94,8 @@ func getDeployRequest(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrat
 		return nil, err
 	}
 	org := organization(ctx, d)
-	dbName := d.KeyColumnQuals["database_name"].GetStringValue()
-	num := d.KeyColumnQuals["number"].GetInt64Value()
+	dbName := d.EqualsQuals["database_name"].GetStringValue()
+	num := d.EqualsQuals["number"].GetInt64Value()
 	opts := &planetscale.GetDeployRequestRequest{Organization: org, Database: dbName, Number: uint64(num)}
 	item, err := conn.DeployRequests.Get(ctx, opts)
 	if err != nil {
