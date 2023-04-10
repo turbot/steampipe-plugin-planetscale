@@ -5,9 +5,9 @@ import (
 
 	"github.com/planetscale/planetscale-go/planetscale"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tablePlanetScaleDatabase(ctx context.Context) *plugin.Table {
@@ -59,7 +59,7 @@ func getDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData
 		plugin.Logger(ctx).Error("planetscale_database.getDatabase", "connection_error", err)
 		return nil, err
 	}
-	name := d.KeyColumnQuals["name"].GetStringValue()
+	name := d.EqualsQuals["name"].GetStringValue()
 	opts := &planetscale.GetDatabaseRequest{Organization: organization(ctx, d), Database: name}
 	item, err := conn.Databases.Get(ctx, opts)
 	if err != nil {
