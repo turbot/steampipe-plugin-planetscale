@@ -6,7 +6,7 @@ Use SQL to query databases, logs and more from PlanetScale.
 
 - **[Get started →](https://hub.steampipe.io/plugins/turbot/planetscale)**
 - Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/turbot/planetscale/tables)
-- Community: [Slack Channel](https://steampipe.io/community/join)
+- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
 - Get involved: [Issues](https://github.com/turbot/steampipe-plugin-planetscale/issues)
 
 ## Quick start
