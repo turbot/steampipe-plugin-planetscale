@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/pkg/errors v0.9.1
 	github.com/planetscale/planetscale-go v0.73.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.1
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.2
 )
 
 require (
