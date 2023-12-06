@@ -11,6 +11,9 @@ PlanetScale Backup is a feature within PlanetScale that allows you to create, ma
 
 The `planetscale_backup` table provides insights into the backup details within PlanetScale. As a database administrator, explore backup-specific details through this table, including backup status, size, and related metadata. Utilize it to uncover information about backups, such as backup creation time, duration, and the associated database details.
 
+**Important Notes**
+- You must specify the `database_name` in the `where` clause to query this table.
+
 ## Examples
 
 ### List all backups for a database

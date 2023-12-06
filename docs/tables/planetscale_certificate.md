@@ -11,6 +11,9 @@ PlanetScale Certificates are SSL certificates used within the PlanetScale databa
 
 The `planetscale_certificate` table provides insights into SSL certificates used within the PlanetScale database service. As a Database Administrator, explore certificate-specific details through this table, including certificate state, creation and expiration dates, and associated metadata. Utilize it to uncover information about certificates, such as their current state, the duration of validity, and the verification of expiration dates.
 
+**Important Notes**
+- You must specify the `database_name` in the `where` clause to query this table.
+
 ## Examples
 
 ### List all certificates for a database

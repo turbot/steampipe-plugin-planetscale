@@ -11,6 +11,9 @@ PlanetScale is a database platform that allows developers to build applications 
 
 The `planetscale_password` table allows users to query and analyze the passwords associated with PlanetScale databases. As a Database Administrator or Security Analyst, you can use this table to gain insights into the configuration and status of these passwords. This can assist in identifying potential security vulnerabilities, ensuring compliance with password policies, and maintaining overall database security.
 
+**Important Notes**
+- You must specify the `database_name` in the `where` clause to query this table.
+
 ## Examples
 
 ### List all passwords for a database
