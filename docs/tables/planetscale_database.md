@@ -16,33 +16,58 @@ The `planetscale_database` table provides insights into databases within PlanetS
 ### List all databases
 Explore all the databases available in your system to understand their structure and organization. This could help in managing data more efficiently and making informed decisions for data manipulation or migration.
 
-```sql
+```sql+postgres
 select
   *
 from
-  planetscale_database
+  planetscale_database;
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_database;
 ```
 
 ### Databases created in the last week
 Discover the databases that have been established within the past week. This can be beneficial for monitoring recent activity and assessing the growth of your data infrastructure.
 
-```sql
+```sql+postgres
 select
   *
 from
   planetscale_database
 where
-  age(created_at) < interval '7 days'
+  age(created_at) < interval '7 days';
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_database
+where
+  julianday('now') - julianday(created_at) < 7;
 ```
 
 ### Databases in US regions
 Explore which databases are located in US regions to optimize data management and improve latency. This can be beneficial in enhancing user experience and ensuring efficient data access.
 
-```sql
+```sql+postgres
 select
   *
 from
   planetscale_database
 where
-  region like 'us-%'
+  region like 'us-%';
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_database
+where
+  region like 'us-%';
 ```

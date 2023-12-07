@@ -16,9 +16,16 @@ The `planetscale_organization` table provides insights into organizations within
 ### List all organizations
 Explore all the organizations within your database, helping you to understand the breadth and diversity of data you're dealing with. This can be particularly useful for large-scale projects or when managing databases across multiple departments or teams.
 
-```sql
+```sql+postgres
 select
   *
 from
-  planetscale_organization
+  planetscale_organization;
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_organization;
 ```

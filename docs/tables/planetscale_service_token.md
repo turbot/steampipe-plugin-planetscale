@@ -16,9 +16,16 @@ The `planetscale_service_token` table provides insights into service tokens with
 ### List all service tokens
 Explore the range of service tokens available in your system. This can be particularly useful when you need to manage or audit your service tokens.
 
-```sql
+```sql+postgres
 select
   *
 from
-  planetscale_service_token
+  planetscale_service_token;
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_service_token;
 ```

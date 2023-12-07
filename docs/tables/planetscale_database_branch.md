@@ -16,34 +16,60 @@ The `planetscale_database_branch` table provides insights into the branches of d
 ### List all branches for all databases
 Explore the various branches across all your databases to manage and keep track of different versions of your data effectively. This aids in making informed decisions for version control and data integrity.
 
-```sql
+```sql+postgres
 select
   *
 from
-  planetscale_database_branch
+  planetscale_database_branch;
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_database_branch;
 ```
 
 ### List branches for a specific database
 Explore the different branches within a specific database to understand its various versions or instances. This is useful for managing changes and updates to the database.
 
-```sql
+```sql+postgres
 select
   *
 from
   planetscale_database_branch
 where
-  database_name = 'test'
+  database_name = 'test';
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_database_branch
+where
+  database_name = 'test';
 ```
 
 ### Branches derived from the main branch
 Discover the segments that have been created from the main branch in a specific database, which can be useful when tracking the evolution of your data and managing your database structure.
 
-```sql
+```sql+postgres
 select
   *
 from
   planetscale_database_branch
 where
   database_name = 'test'
-  and parent_branch = 'main'
+  and parent_branch = 'main';
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_database_branch
+where
+  database_name = 'test'
+  and parent_branch = 'main';
 ```

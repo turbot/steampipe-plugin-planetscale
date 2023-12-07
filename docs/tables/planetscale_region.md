@@ -16,9 +16,16 @@ The `planetscale_region` table provides insights into the regions available with
 ### List all regions
 Explore all the geographical regions in which PlanetScale operates, to better understand its global distribution and reach. This knowledge can be useful for planning resource allocation and optimizing service performance.
 
-```sql
+```sql+postgres
 select
   *
 from
-  planetscale_region
+  planetscale_region;
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_region;
 ```

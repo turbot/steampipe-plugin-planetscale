@@ -19,23 +19,41 @@ The `planetscale_certificate` table provides insights into SSL certificates used
 ### List all certificates for a database
 Explore all certificates related to a particular database to ensure proper security management and compliance. This can be particularly useful in maintaining data integrity and safeguarding sensitive information.
 
-```sql
+```sql+postgres
 select
   *
 from
   planetscale_certificate
 where
-  database_name = 'test'
+  database_name = 'test';
+```
+
+```sql+sqlite
+select
+  *
+from
+  planetscale_certificate
+where
+  database_name = 'test';
 ```
 
 ### List all certificates for all branches
 Explore the certificates associated with each branch of your database. This can help in ensuring that all branches are secure and properly certified, aiding in maintaining the overall security posture of your database.
 
-```sql
+```sql+postgres
 select
   c.*
 from
   planetscale_database as d
 join
-  planetscale_certificate as c on d.name = c.database_name
+  planetscale_certificate as c on d.name = c.database_name;
+```
+
+```sql+sqlite
+select
+  c.*
+from
+  planetscale_database as d
+join
+  planetscale_certificate as c on d.name = c.database_name;
 ```

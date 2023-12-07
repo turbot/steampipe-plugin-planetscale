@@ -19,7 +19,7 @@ The `planetscale_password` table allows users to query and analyze the passwords
 ### List all passwords for a database
 Identify all passwords associated with a specific database to enhance security monitoring and ensure proper access control. This is particularly useful in managing user permissions and maintaining database integrity.
 
-```sql
+```sql+postgres
 select
   p.organization_name,
   p.database_name,
@@ -29,13 +29,26 @@ select
 from
   planetscale_password
 where
-  database_name = 'test'
+  database_name = 'test';
+```
+
+```sql+sqlite
+select
+  p.organization_name,
+  p.database_name,
+  p.branch_name,
+  p.name,
+  p.created_at
+from
+  planetscale_password p
+where
+  p.database_name = 'test';
 ```
 
 ### List all passwords for all databases & branches
 Explore which passwords are associated with specific organizations, databases, and branches. This can be beneficial for managing and reviewing access control in a real-world scenario.
 
-```sql
+```sql+postgres
 select
   p.organization_name,
   p.database_name,
@@ -45,13 +58,26 @@ select
 from
   planetscale_database as d
 join
-  planetscale_password as p on d.name = p.database_name
+  planetscale_password as p on d.name = p.database_name;
+```
+
+```sql+sqlite
+select
+  p.organization_name,
+  p.database_name,
+  p.branch_name,
+  p.name,
+  p.created_at
+from
+  planetscale_database as d
+join
+  planetscale_password as p on d.name = p.database_name;
 ```
 
 ### List all passwords more than 90 days old
 Explore which passwords in your organization's database are more than 90 days old. This can be crucial for maintaining security standards, as it allows you to identify and update potentially vulnerable or outdated passwords.
 
-```sql
+```sql+postgres
 select
   p.organization_name,
   p.database_name,
@@ -63,5 +89,20 @@ from
 join
   planetscale_password as p on d.name = p.database_name
 where
-  age(p.created_at) > interval '90 days'
+  age(p.created_at) > interval '90 days';
+```
+
+```sql+sqlite
+select
+  p.organization_name,
+  p.database_name,
+  p.branch_name,
+  p.name,
+  p.created_at
+from
+  planetscale_database as d
+join
+  planetscale_password as p on d.name = p.database_name
+where
+  julianday('now') - julianday(p.created_at) > 90;
 ```
