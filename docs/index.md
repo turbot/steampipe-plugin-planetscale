@@ -77,7 +77,4 @@ Environment variables are also available as an alternate configuration method:
 * `PLANETSCALE_ORGANIZATION`
 * `PLANETSCALE_TOKEN`
 
-## Get involved
 
-- Open source: https://github.com/turbot/steampipe-plugin-planetscale
-- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
