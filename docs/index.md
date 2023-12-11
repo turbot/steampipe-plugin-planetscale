@@ -8,6 +8,7 @@ short_name: "planetscale"
 description: "Steampipe plugin to query databases, logs and more from PlanetScale."
 og_description: "Query PlanetScale with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/planetscale-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # PlanetScale + Steampipe
