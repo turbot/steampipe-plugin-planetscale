@@ -8,13 +8,14 @@ short_name: "planetscale"
 description: "Steampipe plugin to query databases, logs and more from PlanetScale."
 og_description: "Query PlanetScale with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/planetscale-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # PlanetScale + Steampipe
 
 [PlanetScale](https://planetscale.com) is a MySQL-compatible serverless database platform.
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 List databases in your PlanetScale account:
 
@@ -76,7 +77,4 @@ Environment variables are also available as an alternate configuration method:
 * `PLANETSCALE_ORGANIZATION`
 * `PLANETSCALE_TOKEN`
 
-## Get involved
 
-- Open source: https://github.com/turbot/steampipe-plugin-planetscale
-- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
