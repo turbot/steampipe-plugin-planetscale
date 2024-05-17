@@ -21,14 +21,14 @@ func tablePlanetScaleDatabase(ctx context.Context) *plugin.Table {
 			KeyColumns: plugin.SingleColumn("name"),
 			Hydrate:    getDatabase,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the database."},
 			{Name: "region_slug", Type: proto.ColumnType_STRING, Transform: transform.FromField("Region.Slug"), Description: "Region where the database is located."},
 			{Name: "notes", Type: proto.ColumnType_STRING, Description: "Notes for the database."},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "When the database was created."},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "When the database was updated."},
-		},
+		}),
 	}
 }
 

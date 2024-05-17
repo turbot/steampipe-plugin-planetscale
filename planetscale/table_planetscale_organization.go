@@ -14,12 +14,12 @@ func tablePlanetScaleOrganization(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listOrganization,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the organization."},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "When the organization was created."},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "When the organization was updated."},
-		},
+		}),
 	}
 }
 

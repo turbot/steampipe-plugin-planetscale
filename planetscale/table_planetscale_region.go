@@ -16,13 +16,13 @@ func tablePlanetScaleRegion(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listRegion,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "slug", Type: proto.ColumnType_STRING, Description: "Slug of the region."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Display name of the region."},
 			{Name: "location", Type: proto.ColumnType_STRING, Description: "Location for the region."},
 			{Name: "enabled", Type: proto.ColumnType_BOOL, Description: "True if the region is enabled."},
-		},
+		}),
 	}
 }
 
