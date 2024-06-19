@@ -15,7 +15,7 @@ func tablePlanetScaleAuditLog(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listAuditLog,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "Unique ID of the log entry."},
 			{Name: "type", Type: proto.ColumnType_STRING, Description: "Type of log entry, e.g. AuditLogEvent."},
@@ -35,7 +35,7 @@ func tablePlanetScaleAuditLog(ctx context.Context) *plugin.Table {
 			{Name: "metadata", Type: proto.ColumnType_JSON, Description: "Metadata for the audit record."},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "When the audit record was created."},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "When the audit record was updated."},
-		},
+		}),
 	}
 }
 

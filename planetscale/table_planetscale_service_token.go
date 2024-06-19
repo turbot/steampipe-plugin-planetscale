@@ -16,12 +16,12 @@ func tablePlanetScaleServiceToken(ctx context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listServiceToken,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_STRING, Description: "Unique identifier for the service token."},
 			{Name: "type", Type: proto.ColumnType_STRING, Description: "Type of the token."},
 			// Always null? {Name: "token", Type: proto.ColumnType_STRING, Description: "The service token."},
-		},
+		}),
 	}
 }
 
