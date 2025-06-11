@@ -7,7 +7,7 @@ toolchain go1.23.2
 require (
 	github.com/pkg/errors v0.9.1
 	github.com/planetscale/planetscale-go v0.73.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.6
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.7
 )
 
 require (
