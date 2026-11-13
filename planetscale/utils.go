@@ -8,14 +8,14 @@ import (
 	"github.com/pkg/errors"
 	"github.com/planetscale/planetscale-go/planetscale"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
 )
 
-func connect(_ context.Context, d *plugin.QueryData) (*planetscale.Client, error) {
+func connect(ctx context.Context, d *plugin.QueryData) (*planetscale.Client, error) {
 
 	// Load connection from cache, which preserves throttling protection etc
 	cacheKey := "planetscale"
-	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
+	if cachedData, ok := d.ConnectionCache.Get(ctx, cacheKey); ok {
 		return cachedData.(*planetscale.Client), nil
 	}
 
@@ -57,16 +57,16 @@ func connect(_ context.Context, d *plugin.QueryData) (*planetscale.Client, error
 	*/
 
 	// Save to cache
-	d.ConnectionManager.Cache.Set(cacheKey, conn)
+	_ = d.ConnectionCache.Set(ctx, cacheKey, conn)
 
 	return conn, nil
 }
 
-func organization(_ context.Context, d *plugin.QueryData) string {
+func organization(ctx context.Context, d *plugin.QueryData) string {
 
 	// Load connection from cache, which preserves throttling protection etc
 	cacheKey := "planetscale_organization"
-	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
+	if cachedData, ok := d.ConnectionCache.Get(ctx, cacheKey); ok {
 		return cachedData.(string)
 	}
 
@@ -80,11 +80,11 @@ func organization(_ context.Context, d *plugin.QueryData) string {
 	}
 
 	// Save to cache
-	d.ConnectionManager.Cache.Set(cacheKey, org)
+	_ = d.ConnectionCache.Set(ctx, cacheKey, org)
 
 	return org
 }
 
-func isNotFoundError(err error) bool {
+func isNotFoundError(_ context.Context, _ *plugin.QueryData, _ *plugin.HydrateData, err error) bool {
 	return strings.Contains(err.Error(), "Not Found")
 }
